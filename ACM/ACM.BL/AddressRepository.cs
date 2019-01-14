@@ -37,7 +37,7 @@ namespace ACM.BL
             // for the customer.
 
 
-            // Temporary hard coded values to return 
+            // Temporary hard-coded values to return 
             // a set of addresses for a customer
             var addressList = new List<Address>();
             Address address = new Address(1)
@@ -66,7 +66,6 @@ namespace ACM.BL
             return addressList;
         }
 
-
         /// <summary>
         /// Saves the current address.
         /// </summary>
@@ -75,16 +74,23 @@ namespace ACM.BL
         {
             var success = true;
 
-            if (address.HasChanges && address.IsValid)
+            if (address.HasChanges)
             {
-                if (address.IsNew)
+                if (address.IsValid)
                 {
-                    // Call an Insert Stored Procedure
+                    if (address.IsNew)
+                    {
+                        // Call an Insert Stored Procedure
 
+                    }
+                    else
+                    {
+                        // Call an Update Stored Procedure
+                    }
                 }
                 else
                 {
-                    // Call an Update Stored Procedure
+                    success = false;
                 }
             }
             return success;

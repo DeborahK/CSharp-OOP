@@ -1,11 +1,15 @@
 ﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 
 namespace ACM.BL
 {
     public class Customer : EntityBase, ILoggable
     {
-        public Customer() : this(0) { }
+        public Customer() : this(0)
+        {
+
+        }
 
         public Customer(int customerId)
         {
@@ -15,30 +19,13 @@ namespace ACM.BL
 
         public List<Address> AddressList { get; set; }
 
+        public int CustomerId { get; private set; }
+
         public int CustomerType { get; set; }
-
-        public static int InstanceCount { get; set; }
-
-        private string _lastName;
-        public string LastName
-        {
-            get
-            {
-                // Any code here
-                return _lastName;
-            }
-            set
-            {
-                // Any code here
-                _lastName = value;
-            }
-        }
-
-        public string FirstName { get; set; }
 
         public string EmailAddress { get; set; }
 
-        public int CustomerId { get; private set; }
+        public string FirstName { get; set; }
 
         public string FullName
         {
@@ -57,6 +44,42 @@ namespace ACM.BL
             }
         }
 
+        public static int InstanceCount { get; set; }
+
+        private string _lastName;
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                _lastName = value;
+            }
+        }
+
+        // Long form of the Log method
+        //public string Log()
+        //{
+        //    var logString = CustomerId + ": " +
+        //                    FullName + " " +
+        //                    "Email: " + EmailAddress + " " +
+        //                    "Status: " + EntityState.ToString();
+        //    return logString;
+        //}
+
+        // Short cut form of the Log method
+        public string Log() => 
+            $"{CustomerId}: {FullName} Email: {EmailAddress} Status: {EntityState.ToString()}";
+
+
+        public override string ToString() => FullName;
+
+        /// <summary>
+        /// Validates the customer data.
+        /// </summary>
+        /// <returns></returns>
         public override bool Validate()
         {
             var isValid = true;
@@ -66,10 +89,5 @@ namespace ACM.BL
 
             return isValid;
         }
-
-        public override string ToString() => FullName;
-
-        public string Log() =>
-            $"{CustomerId}: {FullName} Email: {EmailAddress} Status: {EntityState.ToString()}";
     }
 }

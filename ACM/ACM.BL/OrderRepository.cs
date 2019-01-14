@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace ACM.BL
 {
     public class OrderRepository
     {
-       /// <summary>
+        /// <summary>
         /// Retrieve one order.
         /// </summary>
         public Order Retrieve(int orderId)
@@ -16,52 +15,15 @@ namespace ACM.BL
 
             // Code that retrieves the defined order
 
-            return order;
-        }
-
-        public OrderDisplay RetrieveOrderDisplay(int orderId)
-        {
-            OrderDisplay orderDisplay = new OrderDisplay();
-
-            // Code that retrieves the defined order fields
-            var addressRepository = new AddressRepository();
-
-            // Temporary Hard-coded data
+            // Temporary hard-coded values to return 
+            // a populated order
             if (orderId == 10)
             {
-                orderDisplay.FirstName = "Bilbo";
-                orderDisplay.LastName = "Baggins";
                 // Use current year in hard-coded data
-                orderDisplay.OrderDate = new DateTimeOffset(DateTime.Now.Year, 4, 14, 10, 00, 00, new TimeSpan(7, 0, 0));
-                orderDisplay.ShippingAddress = addressRepository.Retrieve(1);
+                order.OrderDate = new DateTimeOffset(DateTime.Now.Year, 4, 14, 10, 00, 00, new TimeSpan(7, 0, 0));
             }
 
-            orderDisplay.OrderDisplayItemList = new List<OrderDisplayItem>();
-
-            // Code that retrieves the order items
-
-            // Temporary Hard-coded data
-            if (orderId == 10)
-            {
-                var orderDisplayItem = new OrderDisplayItem()
-                {
-                    ProductName = "Sunflowers",
-                    PurchasePrice = 15.96M,
-                    OrderQuantity = 2
-                };
-                orderDisplay.OrderDisplayItemList.Add(orderDisplayItem);
-
-                orderDisplayItem = new OrderDisplayItem()
-                {
-                    ProductName = "Rake",
-                    PurchasePrice = 6M,
-                    OrderQuantity = 1
-                };
-                orderDisplay.OrderDisplayItemList.Add(orderDisplayItem);
-            }
-
-
-            return orderDisplay;
+            return order;
         }
 
         /// <summary>
@@ -72,16 +34,23 @@ namespace ACM.BL
         {
             var success = true;
 
-            if (order.HasChanges && order.IsValid)
+            if (order.HasChanges)
             {
-                if (order.IsNew)
+                if (order.IsValid)
                 {
-                    // Call an Insert Stored Procedure
+                    if (order.IsNew)
+                    {
+                        // Call an Insert Stored Procedure
 
+                    }
+                    else
+                    {
+                        // Call an Update Stored Procedure
+                    }
                 }
                 else
                 {
-                    // Call an Update Stored Procedure
+                    success = false;
                 }
             }
             return success;

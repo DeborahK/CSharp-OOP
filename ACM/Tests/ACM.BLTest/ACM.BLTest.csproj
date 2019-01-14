@@ -56,8 +56,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CustomerTest.cs" />
-    <Compile Include="OrderRepositoryTests.cs" />
-    <Compile Include="ProductRepositoryTests.cs" />
+    <Compile Include="OrderRepositoryTest.cs" />
+    <Compile Include="ProductRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerRepositoryTest.cs" />
   </ItemGroup>

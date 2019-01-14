@@ -8,7 +8,7 @@ namespace ACM.BLTest
     public class CustomerRepositoryTest
     {
         [TestMethod]
-        public void RetrieveExisting()
+        public void RetrieveValid()
         {
             //-- Arrange
             var customerRepository = new CustomerRepository();
@@ -65,7 +65,6 @@ namespace ACM.BLTest
                     }
             };
 
-
             //-- Act
             var actual = customerRepository.Retrieve(1);
 
@@ -84,7 +83,6 @@ namespace ACM.BLTest
                 Assert.AreEqual(expected.AddressList[i].Country, actual.AddressList[i].Country);
                 Assert.AreEqual(expected.AddressList[i].PostalCode, actual.AddressList[i].PostalCode);
             }
-
         }
     }
 }

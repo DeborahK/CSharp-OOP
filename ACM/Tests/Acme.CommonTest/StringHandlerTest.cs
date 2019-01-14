@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Acme.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Acme.Common;
 
 namespace Acme.CommonTest
 {
@@ -20,7 +19,6 @@ namespace Acme.CommonTest
 
             // Assert
             Assert.AreEqual(expected, actual);
-
         }
 
         [TestMethod]

@@ -6,14 +6,15 @@ namespace ACM.BLTest
     [TestClass]
     public class CustomerTest
     {
-
         [TestMethod]
         public void FullNameTestValid()
         {
             //-- Arrange
-            Customer customer = new Customer();
-            customer.FirstName = "Bilbo";
-            customer.LastName = "Baggins";
+            Customer customer = new Customer
+            {
+                FirstName = "Bilbo",
+                LastName = "Baggins"
+            };
 
             string expected = "Baggins, Bilbo";
 
@@ -28,8 +29,11 @@ namespace ACM.BLTest
         public void FullNameFirstNameEmpty()
         {
             //-- Arrange
-            Customer customer = new Customer();
-            customer.LastName = "Baggins";
+            Customer customer = new Customer
+            {
+                LastName = "Baggins"
+            };
+
             string expected = "Baggins";
 
             //-- Act
@@ -43,8 +47,11 @@ namespace ACM.BLTest
         public void FullNameLastNameEmpty()
         {
             //-- Arrange
-            Customer customer = new Customer();
-            customer.FirstName = "Bilbo";
+            Customer customer = new Customer
+            {
+                FirstName = "Bilbo"
+            };
+
             string expected = "Bilbo";
 
             //-- Act
@@ -74,8 +81,10 @@ namespace ACM.BLTest
         public void ObjectTypeTest()
         {
             //-- Arrange
-            var c1 = new Customer();
-            c1.FirstName = "Bilbo";
+            var c1 = new Customer
+            {
+                FirstName = "Bilbo"
+            };
 
             //-- Act
             var c2 = c1;
@@ -111,9 +120,11 @@ namespace ACM.BLTest
         public void ValidateValid()
         {
             //-- Arrange
-            var customer = new Customer();
-            customer.LastName = "Baggins";
-            customer.EmailAddress = "fbaggins@hobbiton.me";
+            var customer = new Customer
+            {
+                LastName = "Baggins",
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
 
             var expected = true;
 
@@ -128,8 +139,10 @@ namespace ACM.BLTest
         public void ValidateMissingLastName()
         {
             //-- Arrange
-            var customer = new Customer();
-            customer.EmailAddress = "fbaggins@hobbiton.me";
+            var customer = new Customer
+            {
+                EmailAddress = "fbaggins@hobbiton.me"
+            };
 
             var expected = false;
 
@@ -141,5 +154,4 @@ namespace ACM.BLTest
         }
 
     }
-
 }

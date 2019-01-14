@@ -45,9 +45,7 @@
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="OrderDisplay.cs" />
     <Compile Include="OrderItem.cs" />
-    <Compile Include="OrderDisplayItem.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductRepository.cs" />

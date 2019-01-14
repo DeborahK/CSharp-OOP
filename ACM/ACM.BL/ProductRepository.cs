@@ -13,14 +13,7 @@ namespace ACM.BL
             // Pass in the requested Id
             Product product = new Product(productId);
 
-            Object myObject = new Object();
-
-            Console.WriteLine("Object: " + myObject.ToString());
-            Console.WriteLine("Product: " + product.ToString());
-
-            // Code that retrieves the defined product
-
-            // Temporary hard coded values to return 
+            // Temporary hard-coded values to return 
             // a populated product
             if (productId == 2)
             {
@@ -28,6 +21,13 @@ namespace ACM.BL
                 product.ProductDescription = "Assorted Size Set of 4 Bright Yellow Mini Sunflowers";
                 product.CurrentPrice = 15.96M;
             }
+
+            // Code that retrieves the defined product
+
+            Object myObject = new Object();
+            Console.WriteLine($"Object: {myObject.ToString()}");
+            Console.WriteLine($"Product: {product.ToString()}");
+
             return product;
         }
 
@@ -39,16 +39,23 @@ namespace ACM.BL
         {
             var success = true;
 
-            if (product.HasChanges && product.IsValid)
+            if (product.HasChanges)
             {
-                if (product.IsNew)
+                if (product.IsValid)
                 {
-                    // Call an Insert Stored Procedure
+                    if (product.IsNew)
+                    {
+                        // Call an Insert Stored Procedure
 
+                    }
+                    else
+                    {
+                        // Call an Update Stored Procedure
+                    }
                 }
                 else
                 {
-                    // Call an Update Stored Procedure
+                    success = false;
                 }
             }
             return success;

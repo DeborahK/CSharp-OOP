@@ -21,7 +21,7 @@ namespace Acme.CommonTest
                 LastName = "Baggins",
                 AddressList = null
             };
-            changedItems.Add(customer as ILoggable);
+            changedItems.Add(customer);
 
             var product = new Product(2)
             {
@@ -29,7 +29,7 @@ namespace Acme.CommonTest
                 ProductDescription = "Garden Rake with Steel Head",
                 CurrentPrice = 6M
             };
-            changedItems.Add(product as ILoggable);
+            changedItems.Add(product);
 
             // Act
             LoggingService.WriteToFile(changedItems);
